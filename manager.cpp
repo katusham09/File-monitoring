@@ -67,3 +67,12 @@ void Manager::deleteFile(const QString& path)
         }
     }
 }
+
+// Метод для подключения логгера к сигналам создания, удаления и изменения размера файла
+void Manager::connectLogger(Logger& logger)
+{
+    // Подключаем сигналы создания, удаления и изменения размера файла к соответствующим методам логгера
+    QObject::connect(this, &Manager::fileCreated, &logger, &Logger::logFileCreated);
+    QObject::connect(this, &Manager::fileDeleted, &logger, &Logger::logFileDeleted);
+    QObject::connect(this, &Manager::fileSizeChanged, &logger, &Logger::logFileSizeChanged);
+}

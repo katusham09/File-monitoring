@@ -15,6 +15,7 @@ public:
     void addFile(const QString& path); // Метод для добавления файла в список отслеживаемых файлов
     void deleteFile(const QString& path); // Метод для удаления файла из списка отслеживаемых файлов
     void checkChanges(); // Метод для проверки изменений в отслеживаемых файлах
+    void connectLogger(Logger& logger); // Метод для подключения логгера
 
 private:
     QVector<FileInfo> files; // Вектор для хранения информации о файлах
@@ -24,6 +25,4 @@ signals:
     void fileCreated(const QString& path, int size); // Сигнал о создании файла
     void fileDeleted(const QString& path); // Сигнал об удалении файла
 };
-
-
 #endif // MANAGER_H
