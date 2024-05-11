@@ -15,8 +15,7 @@ public:
     QString getPath() const;//получение пути к файлу
     int getSize() const;//получение размера файла
     bool getExistence() const;//получение флага существования файла
-    void setExistence(bool existence);//установка существования файла
-    void setSize(int newSize);//установка размера файла
+    void update();//Обновление размера и флага существования файла
 };
 
 #endif // FILEINFO_H

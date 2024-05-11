@@ -22,12 +22,11 @@ void Manager::checkChanges()
         // Если существование файла изменилось (файл создан или удален)
         if (fileInfo.exists() != file.getExistence())
         {
-            file.setExistence(fileInfo.exists()); // Обновляем существование файла
+            file.update();
 
             // Если файл снова существует, обновляем его размер и вызываем сигнал о создании файла
             if (fileInfo.exists())
             {
-                file.setSize(fileInfo.size());
                 emit fileCreated(file.getPath(), fileInfo.size());
             }
             // Если файл больше не существует, вызываем сигнал об удалении файла
@@ -40,7 +39,7 @@ void Manager::checkChanges()
         {
             if (fileInfo.exists() && fileInfo.size() != file.getSize())
             {
-                file.setSize(fileInfo.size());
+               file.update();
                 emit fileSizeChanged(file.getPath(), fileInfo.size()); // Вызываем сигнал об изменении размера файла
             }
         }

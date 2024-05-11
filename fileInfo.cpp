@@ -26,17 +26,14 @@ int FileInfo::getSize() const
     return size; // Возвращаем размер файла
 }
 
-void FileInfo::setSize(int newSize)
-{
-    size = newSize; // Устанавливаем новый размер файла
-}
-
 bool FileInfo::getExistence() const
 {
     return isExistence; // Возвращаем флаг существования файла
 }
 
-void FileInfo::setExistence(bool existence)
+void FileInfo::update()//Обновление размера и флага существования файла
 {
-    isExistence = existence; // Устанавливаем флаг существования файла
+    QFileInfo file(path);
+    isExistence = file.exists();
+    size = file.size();
 }
